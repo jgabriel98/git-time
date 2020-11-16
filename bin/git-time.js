@@ -47,8 +47,8 @@ exec(`ls ${dir}/.git`, function (err, data) {
     console.log(`${dir} is not a valid Git directory`)
     return
   }
-
-  exec(`cd ${dir} && git log ${authors.map(author => `--author="${author}"`).join(" ")} --pretty='format:%an <%ae> %ct'`, function (err, data) {
+  const cmd = `cd ${dir} && git log ${authors.map(author => `--author="${author}"`).join(" ")} --pretty='format:%an <%ae> %ct'`;
+  exec(cmd,{maxBuffer: 1024 * 1024 * 100}, function (err, data) {
     if (err) {
       console.log(err)
       return
