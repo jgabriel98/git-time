@@ -10,7 +10,7 @@ if (typeof argv.help == 'boolean' || typeof argv.h == 'boolean') {
   console.log('  --max\t\tmaximum time in minutes between two consecultive commits. Default: 90')
   console.log('  --min\t\tminimum time in minutes for the start commit. Default: 25')
   console.log('  --author\t\tfilter out authors. Value(s) are passed to the git log command.')
-  
+
   return;
 }
 
@@ -58,7 +58,8 @@ exec(lsCommand, function (err, data) {
     return
   }
 
-  exec(`cd ${dir} && git log ${authors.map(author => `--author="${author}"`).join(" ")} --pretty="%an <%ae> %ct"`, function (err, data) {
+  const cmd = `cd ${dir} && git log ${authors.map(author => `--author="${author}"`).join(" ")} --pretty='format:%an <%ae> %ct'`;
+  exec(cmd,{maxBuffer: 1024 * 1024 * 100}, function (err, data) {
     if (err) {
       console.log(err)
       return
