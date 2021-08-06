@@ -1,6 +1,11 @@
 # Git-time
 Estimate time spent on a git repository.
 
+---------------------------
+##### This is a fork from [vmf91/git-time](https://github.com/vmf91/git-time).<br/>Since the original projects seems to be abadoned, this fork aims to maitain, fix bugs, and improve it.
+
+---------------------------
+
 ## Install
     npm install -g @jgabriel98/git-time
 
