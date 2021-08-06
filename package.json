@@ -1,6 +1,6 @@
 {
   "name": "@jgabriel98/git-time",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Measure time spent on a git repository",
   "homepage": "https://github.com/jgabriel98/git-time#readme",
   "repository": {
