@@ -1,11 +1,11 @@
 {
-  "name": "git-time",
-  "version": "1.0.6",
+  "name": "@jgabriel98/git-time",
+  "version": "1.0.7",
   "description": "Measure time spent on a git repository",
-  "homepage": "https://github.com/vmf91/git-time#readme",
+  "homepage": "https://github.com/jgabriel98/git-time#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vmf91/git-time"
+    "url": "https://github.com/jgabriel98/git-time.git"
   },
   "main": "index.js",
   "scripts": {
@@ -18,13 +18,17 @@
     "spent"
   ],
   "bin": {
-    "git-time": "./bin/git-time.js"
+    "git-time": "bin/git-time.js"
   },
   "preferGlobal": true,
-  "author": "Victor Miranda Fernandes",
+  "author": "João Gabriel Silva Fernandes",
   "license": "ISC",
   "dependencies": {
     "cli-progress": "^2.1.1",
     "minimist": "^1.2.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/jgabriel98/git-time/issues"
+  },
+  "devDependencies": {}
 }
