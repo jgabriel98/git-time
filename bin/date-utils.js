@@ -3,10 +3,10 @@ const moment = require('moment');
 const DATE_FORMAT = 'YYYY-MM-DD';
 
 const pt_BR_translation = {
-  'hoje': 'today',
-  'sempre': 'always',
-  'ontem': 'yesterday',
-  'essanoite': 'tonight',
+  'sempre'       : 'always',
+  'hoje'         : 'today',
+  'ontem'        : 'yesterday',
+  'essasemana'   : 'thisweek',
   'semanapassada': 'lastweek'
 };
 
@@ -36,7 +36,7 @@ function parseInputDate(inputDate) {
     case 'lastweek':
       return now.startOf('week').subtract(1, 'week').format();
     case 'always':
-      return '01-01-0001';
+      return '01-01-1972';
     default:
       // XXX: Moment tries to parse anything, results might be weird
       return moment(inputDate, DATE_FORMAT).startOf('day').format();

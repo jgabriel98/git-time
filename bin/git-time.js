@@ -5,14 +5,14 @@ const {pt_BR_translation, parseInputDate} = require('./date-utils.js');
 
 // If help or bad usage
 if (typeof argv.help == 'boolean' || typeof argv.h == 'boolean') {
-  console.log('\nUsage: git-time <path>\n\nWhere <path> is the path of your Git repository. Defaults to working directory.\n')
-  console.log('Options:\n')
-  console.log('  -h, --help\toutput usage information')
-  console.log('  --max\t\tmaximum time in minutes between two consecultive commits. Default: 90')
-  console.log('  --min\t\tminimum time in minutes for the start commit. Default: 25')
-  console.log('  --since\tsince when do you want to calculate time (inclusive). [always|yesterday|tonight|lastweek|yyyy-mm-dd] Default: always\n'+
-	      '         \tsupports Brazilian portuguese                         [sempre|ontem|essanoite|semanapassada|yyyy-mm-dd].');
-  console.log('  --author\tfilter out authors. Value(s) are passed to the git log command.')
+  console.log('\nUsage: git-time <path>\n\nWhere <path> is the path of your Git repository. Defaults to working directory.\n');
+  console.log('Options:\n');
+  console.log('  -h, --help\toutput usage information');
+  console.log('  --max\t\tmaximum time in minutes between two consecultive commits. Default: 90');
+  console.log('  --min\t\tminimum time in minutes for the start commit. Default: 25');
+  console.log('  --since\tsince when do you want to calculate time (inclusive). [always|today|yesterday|thisweek|lastweek|yyyy-mm-dd]\n'+
+	      '         \tsupports Brazilian portuguese                         [sempre|hoje|ontem|essasemana|semanapassada|yyyy-mm-dd]');
+  console.log('  --author\tfilter out authors. Value(s) are passed to the git log command.');
 
   return;
 }
@@ -20,10 +20,6 @@ if (typeof argv.help == 'boolean' || typeof argv.h == 'boolean') {
 const { exec } = require('child_process');
 const _cliProgress = require('cli-progress');
 
-
-function isEmptyObject(value) {
-  return value && value.constructor === Object && Object.keys(value).length === 0;
-}
 
 
 let dir = argv._[0];
