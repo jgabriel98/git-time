@@ -14,13 +14,14 @@ or
 ## Help
     Usage: git-time <path>
 
-    Where <path> is the path of your Git repository.
+    Where <path> is the path of your Git repository. Defaults to working directory.
     
     Options:
     
       -h, --help	output usage information
-      --max	    	maximum time diff in minutes between two consecultive commits. Default: 90
-      --min	    	minimum time in minutes for the start commit. Default: 25
+      --max         maximum time diff in minutes between two consecultive commits. Default: 90
+      --min         minimum time in minutes for the start commit. Default: 25
+      --since       since when do you want to calculate time. No Default
       --author      filter out authors. Value(s) are passed to the git log command.
       
       

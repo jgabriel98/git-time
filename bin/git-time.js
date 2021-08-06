@@ -4,13 +4,13 @@ var os = require('os');
 
 // If help or bad usage
 if (typeof argv.help == 'boolean' || typeof argv.h == 'boolean') {
-  console.log('\nUsage: git-time <path>\n\nWhere <path> is the path of your Git repository. Defaults to current dir.\n')
+  console.log('\nUsage: git-time <path>\n\nWhere <path> is the path of your Git repository. Defaults to working directory.\n')
   console.log('Options:\n')
   console.log('  -h, --help\toutput usage information')
   console.log('  --max\t\tmaximum time in minutes between two consecultive commits. Default: 90')
   console.log('  --min\t\tminimum time in minutes for the start commit. Default: 25')
-  console.log('  --since\t\tsince when do you want to calculate time. No Default')
-  console.log('  --author\t\tfilter out authors. Value(s) are passed to the git log command.')
+  console.log('  --since\tsince when do you want to calculate time. No Default')
+  console.log('  --author\tfilter out authors. Value(s) are passed to the git log command.')
 
   return;
 }
