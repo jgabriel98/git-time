@@ -21,6 +21,10 @@ const { exec } = require('child_process');
 const _cliProgress = require('cli-progress');
 
 
+function isEmptyObject(value) {
+  return value && value.constructor === Object && Object.keys(value).length === 0;
+}
+
 
 let dir = argv._[0];
 if (!dir || dir == '.')
@@ -87,8 +91,10 @@ exec(lsCommand, function (err, data) {
       let logParts = val.split(" ");
       let time = logParts.pop();
       let author = logParts.join(" ");
-      acc[author] = acc[author] || [];
-      acc[author].push(time);
+      if (val) {
+        acc[author] = acc[author] || [];
+        acc[author].push(time);
+      }
       return acc;
     }, {});
 
@@ -131,7 +137,11 @@ exec(lsCommand, function (err, data) {
 
       let totalHours = total/3600;
       console.log(`Total time spent: ${totalHours.toFixed(2)} hours\n`)
-    })
+    });
+
+    if (isEmptyObject(byAuthor)) {
+	console.log('0 commits found');
+    }
   })
 })
 
