@@ -15,17 +15,18 @@ Estimate time spent on a git repository.
 or
 
     git time <path>
+When `<path>` is omitted, defaults to working directory;
 
-## examples
+### Examples
 from inside a git repository:
  - `$ git time --since lastweek`
  - `$ git-time --since today`
 
 from outside a git repository:
 - `$ git time ./my_repo`
-- `$ git time ./my_repo --since lastweek`
+- `$ git time ./my_repo --since thisweek`
   
-## Help
+### More info
     Usage: git-time <path>
 
     Where <path> is the path of your Git repository. Defaults to working directory.
@@ -39,7 +40,10 @@ from outside a git repository:
                     supports Brazilian portuguese                         [sempre|hoje|ontem|essasemana|semanapassada|yyyy-mm-dd]
       --author      filter out authors. Value(s) are passed to the git log command.
       
-      
+The option `--since` calculates from the last start of the given value, for example:<br/>
+ - `--since thisweek` will get all commits from this week, not from the last 7 days.<br/>
+ - `--since today` will get all commits since the start of today, not from the last 24 hours.
+
 ## Output
 
 Output is grouped by author
