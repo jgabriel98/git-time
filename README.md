@@ -16,6 +16,15 @@ or
 
     git time <path>
 
+## examples
+from inside a git repository:
+ - `$ git time --since lastweek`
+ - `$ git-time --since today`
+
+from outside a git repository:
+- `$ git time ./my_repo`
+- `$ git time ./my_repo --since lastweek`
+  
 ## Help
     Usage: git-time <path>
 
