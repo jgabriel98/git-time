@@ -28,15 +28,18 @@ if (!dir || dir == '.')
 // Wrap in quotes to escape spaces
 dir = '"' + dir + '"'
 
+
 let min = 25
 if (typeof argv.min === 'number')
   min = argv.min
 min *= 60
 
+
 let max = 90
 if (typeof argv.max === 'number')
   max = argv.max
 max *= 60
+
 
 let since = "";
 if (typeof argv.since === 'string') {
@@ -57,6 +60,8 @@ if (argv.author) {
   else
     authors = [argv.author];
 }
+authors = authors.map(author => `--author="${author}"`).join(" ")
+
 
 let lsCommand = `ls ${dir}/.git`;
 if(os.platform() === 'win32')
@@ -65,16 +70,15 @@ if(os.platform() === 'win32')
 
 exec(lsCommand, function (err, data) {
   if (err) {
-    console.log(`${dir} is not a valid Git directory`)
-    return
+    console.error(`${dir} is not a valid Git directory`);
+    process.exit(1);
   }
 
-  const cmd = `cd ${dir} && git log ${since} ${authors.map(author => `--author="${author}"`).join(" ")} --pretty='format:%an <%ae> %ct'`;
-  console.log(cmd);
+  const cmd = `cd ${dir} && git log ${since} ${authors} --pretty='format:%an <%ae> %ct'`;
   exec(cmd,{maxBuffer: 1024 * 1024 * 100}, function (err, data) {
     if (err) {
-      console.log(err)
-      return
+      console.error(err);
+      process.exit(1);
     }
 
     let log = data.split('\n')
